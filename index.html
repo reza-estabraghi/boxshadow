@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+            box-sizing: border-box;
+        }
+        main{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-image: url(img/istockphoto-525935855-612x612.jpg);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        .box{
+            width: 200px;
+            height: 300px;
+            border: 2px solid black;
+            background-image: url(img/trainer-1.jpg);
+            background-size: 100% 100%;
+        }
+        .box1{
+            width: 400px;
+            height: 700px;
+            border: 2px solid rgb(109, 121, 0);
+            display: flex;
+            flex-wrap: wrap;
+            padding: 5px;
+            border-radius: 10px;
+            background-color: blanchedalmond;
+        }
+        .box1>input{
+            width: 30%;
+            height: 50px;
+            margin: 10px 5px;
+            padding-left: 10px;
+        }
+        .box1>span{
+            width: 25%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 10px;
+            font-size: 25px;
+            background-color: grey;
+            box-shadow: 0px 0px 5px 5px grey;
+            color: aqua;
+
+        }
+        #color{
+            width: 20%;
+            padding: 0 20px;
+        }
+        span:nth-of-type(8){
+            background-color: grey;
+            box-shadow: 0px 0px 5px 5px grey;
+            color: aqua;
+            font-size: 25px;
+            font-weight: bold;
+            width: 40%;
+        }
+        p{
+            width: 100%;
+            height: 70px;
+            font-size: 23px;
+        }
+        button{
+            background-color: goldenrod;
+            color: antiquewhite;
+            box-shadow: 0px 0px 5px 5px yellow;
+            border: 1px solid yellow;
+            width: 100px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="box"></div>
+        <div class="box1">
+            <span>vertical</span>
+            <input id="ver" type="number">
+            <span>px</span>
+            <span>horizantel</span>
+            <input id="hori" type="number">
+            <span>px</span>
+            <span>shadow</span>
+            <input id="shadow" type="number">
+            <span>px</span>
+            <span>color</span>
+            <input id="color" type="color">
+            <span>#000000</span>
+            <span>blur</span>
+            <input id="blur" type="number">
+            <span>px</span>
+            <span>inset</span>
+            <input id="check" type="checkbox">
+            <p></p>
+            <button id="copy">copy style</button>
+        </div>
+    </main>
+</body>
+<script>
+    let _ver ='0'
+    let _hor ='0'
+    let _shad= '0'
+    let _col ='#000000'
+    let _blu='0'
+    let _check =''
+    document.getElementsByClassName('box')[0].style.boxShadow='0px 0px 0px 0px black'
+    document.getElementById('ver').addEventListener('input',(e)=>{
+        _ver = e.target.value
+        document.getElementsByClassName('box')[0].style.boxShadow= `${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+        document.getElementsByTagName('p')[0].innerHTML=`box-shadow : ${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+    })
+    document.getElementById('hori').addEventListener('input',(e)=>{
+        _hor =e.target.value
+        document.getElementsByClassName('box')[0].style.boxShadow=`${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`;
+        document.getElementsByTagName('p')[0].innerHTML=`box-shadow : ${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+    })
+    document.getElementById("shadow").addEventListener('input', (e) => {
+        _shad = e.target.value
+        document.getElementsByClassName('box')[0].style.boxShadow=`${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`;
+        document.getElementsByTagName('p')[0].innerHTML=`box-shadow : ${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+    })
+    document.getElementById("color").addEventListener('input', (e) =>{
+        _col = e.target.value
+        document.getElementById('color').nextElementSibling.innerHTML= _col
+        document.getElementsByClassName('box')[0].style.boxShadow=`${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`;
+        document.getElementsByTagName('p')[0].innerHTML=`box-shadow : ${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+    })
+    document.getElementById("blur").addEventListener('input', (e)=> {
+        _blu = e.target.value
+        document.getElementsByClassName('box')[0].style.boxShadow=`${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+        document.getElementsByTagName('p')[0].innerHTML=`box-shadow : ${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+    })
+    document.getElementById("check").addEventListener('input', (e)=> {
+        e.target
+        if(e.target.checked){
+            _check = 'inset'
+            document.getElementsByClassName('box')[0].style.boxShadow=`${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+            document.getElementsByTagName('p')[0].innerHTML=`box-shadow : ${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+        }
+        else{
+            _check = ''
+            document.getElementsByClassName('box')[0].style.boxShadow=`${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+            document.getElementsByTagName('p')[0].innerHTML=`box-shadow : ${_hor}px ${_ver}px ${_blu}px ${_shad}px ${_col} ${_check}`
+        }
+    })
+    document.getElementById('copy').addEventListener('click',(e)=>{
+        let _copy = document.getElementsByTagName('p')[0].innerHTML
+        console.log(_copy);
+        navigator.clipboard.writeText(_copy);
+    })
+</script>
+</html>
